@@ -10,6 +10,7 @@ namespace M10_ProjetoDeAvaliacao
     {
         public virtual List<Cliente> ListaClientes { get; set; } = new List<Cliente>();
         public virtual List<Produto> ListaProdutos { get; set; } = new List<Produto>();
+        public virtual List<Compra> ListaVendas { get; set; } = new List<Compra>();
 
 
         public bool verificaNIF(int nif)

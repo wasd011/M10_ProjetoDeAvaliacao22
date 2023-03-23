@@ -8,9 +8,15 @@ namespace M10_ProjetoDeAvaliacao
 {
     public class Compra
     {
+        public Compra(Cliente comprador, Produto produto, DateTime dataCompra)
+        {
+            this.comprador = comprador;
+            this.produto = produto;
+            this.dataCompra = dataCompra;
+        }
+
         public Cliente comprador { get; set; }
         public Produto produto { get; set; }
         public DateTime dataCompra { get; set; }
-        public string nome { get; set; }
     }
 }

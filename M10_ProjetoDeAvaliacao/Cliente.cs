@@ -26,7 +26,7 @@ namespace M10_ProjetoDeAvaliacao
         public int nif { get; set; }
         public string email { get; set; }
         public string numero { get; set; }
-        private string senha;
+        public string senha { get; set; }
 
         
         public bool verificaLogin(string email, string senha)
