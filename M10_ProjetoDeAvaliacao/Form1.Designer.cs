@@ -28,19 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            btCliente = new Button();
+            btLoja = new Button();
+            SuspendLayout();
+            // 
+            // btCliente
+            // 
+            btCliente.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btCliente.Image = (Image)resources.GetObject("btCliente.Image");
+            btCliente.Location = new Point(136, 122);
+            btCliente.Name = "btCliente";
+            btCliente.Size = new Size(200, 200);
+            btCliente.TabIndex = 0;
+            btCliente.Text = "Cliente";
+            btCliente.TextAlign = ContentAlignment.BottomCenter;
+            btCliente.UseVisualStyleBackColor = true;
+            btCliente.Click += btCliente_Click;
+            // 
+            // btLoja
+            // 
+            btLoja.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btLoja.Image = (Image)resources.GetObject("btLoja.Image");
+            btLoja.Location = new Point(444, 122);
+            btLoja.Name = "btLoja";
+            btLoja.Size = new Size(200, 200);
+            btLoja.TabIndex = 1;
+            btLoja.Text = "Loja";
+            btLoja.TextAlign = ContentAlignment.BottomCenter;
+            btLoja.UseVisualStyleBackColor = true;
+            btLoja.Click += btLoja_Click;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(btLoja);
+            Controls.Add(btCliente);
+            Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Form1";
+            FormClosing += Form1_FormClosing;
+            FormClosed += Form1_FormClosed;
+            Load += Form1_Load;
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button btCliente;
+        private Button btLoja;
     }
 }

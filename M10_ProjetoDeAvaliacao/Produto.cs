@@ -20,6 +20,12 @@ namespace M10_ProjetoDeAvaliacao
             verificaDisponibiliade();
         }
 
+        public Produto() 
+        {
+
+        }
+
+
         public string nome { get; set; }
         public double preco { get; set; }
         public int stock { get; set; }
@@ -36,18 +42,13 @@ namespace M10_ProjetoDeAvaliacao
             else
                 this.disponivel = false;
         }
-        public void Venda()
+        public void Venda(int quantidade)
         {
-            if (this.disponivel && this.stock > 0)
+            if (this.disponivel && this.stock >= quantidade)
             {
-                this.stock--;
+                this.stock =- quantidade;
                 verificaDisponibiliade();
             }
-        }
-        public void ReStock(int quantidade)
-        {
-            this.stock += quantidade;
-            verificaDisponibiliade();
         }
     }
 }

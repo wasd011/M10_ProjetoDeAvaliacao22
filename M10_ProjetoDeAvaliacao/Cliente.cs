@@ -20,6 +20,11 @@ namespace M10_ProjetoDeAvaliacao
             this.senha = senha;
         }
 
+        public Cliente()
+        {
+
+        }
+
         public string nome { get; set; }
         public string morada { get; set; }
         public DateTime dataNascimento { get; set; }
@@ -36,7 +41,5 @@ namespace M10_ProjetoDeAvaliacao
 
             return false;
         }
-
-
     }
 }
