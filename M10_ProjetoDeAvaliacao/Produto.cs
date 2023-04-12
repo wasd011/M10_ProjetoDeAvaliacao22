@@ -9,14 +9,13 @@ namespace M10_ProjetoDeAvaliacao
 {
     public class Produto
     {
-        public Produto(string nome, double preco, int stock, string descricao, string categoria, string subCategoria)
+        public Produto(string nome, double preco, int stock, string descricao, string categoria)
         {
             this.nome = nome;
             this.preco = preco;
             this.stock = stock;
             this.descricao = descricao;
             this.categoria = categoria;
-            this.subCategoria = subCategoria;
             verificaDisponibiliade();
         }
 
@@ -24,14 +23,11 @@ namespace M10_ProjetoDeAvaliacao
         {
 
         }
-
-
         public string nome { get; set; }
         public double preco { get; set; }
         public int stock { get; set; }
         public string descricao { get; set; }
         public string categoria { get; set; }
-        public string subCategoria { get; set; }
         public bool disponivel { get; set; }
         
 
@@ -49,6 +45,10 @@ namespace M10_ProjetoDeAvaliacao
                 this.stock =- quantidade;
                 verificaDisponibiliade();
             }
+        }
+        public void AdicionarStock(int quantidade)
+        {
+            this.stock += quantidade;
         }
     }
 }

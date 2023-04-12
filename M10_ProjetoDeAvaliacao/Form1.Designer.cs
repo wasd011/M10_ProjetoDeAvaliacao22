@@ -66,11 +66,11 @@
             ClientSize = new Size(800, 450);
             Controls.Add(btLoja);
             Controls.Add(btCliente);
+            MaximizeBox = false;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Tela Inicial";
             FormClosing += Form1_FormClosing;
-            FormClosed += Form1_FormClosed;
             Load += Form1_Load;
             ResumeLayout(false);
         }

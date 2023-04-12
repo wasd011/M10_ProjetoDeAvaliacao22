@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace M10_ProjetoDeAvaliacao
 {
-    public class Cliente : Loja
+    public class Cliente
     {
         public Cliente(string nome, string morada, DateTime dataNascimento, int nIF, string email, string numero, string senha)
         {
