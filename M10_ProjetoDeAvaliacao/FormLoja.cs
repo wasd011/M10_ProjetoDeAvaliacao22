@@ -73,6 +73,51 @@ namespace M10_ProjetoDeAvaliacao
                 tabControlProduto.SelectedTab = tabPageListaProdutos;
             }
         }
+
+        private void btAlterarProduto_Click(object sender, EventArgs e)
+        {
+            if (Loja.VerificaProduto.VerificarTudo(Loja, tbNomeP.Text, rTbDescricao.Text, tbCategoriaP.Text, editarP))
+            {
+                Loja.ListaProdutos[indexP].preco = (double)nupPrecoP.Value;
+                Loja.ListaProdutos[indexP].descricao = rTbDescricao.Text;
+                Loja.ListaProdutos[indexP].categoria = tbCategoriaP.Text;
+
+                LimparProduto();
+                AtualizarDGVProduto();
+                AtualizarDGVReStock();
+                AtualizarDGVVendas();
+                AtualizaCBReStockProduto();
+
+                tabPrincipal.SelectedTab = tabPageProduto;
+                tabControlProduto.SelectedTab = tabPageListaProdutos;
+            }
+        }
+        private void editarProdutoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvListaProdutos.Rows.Count > 0 && Loja.ListaProdutos.Count > 0)
+            {
+
+                indexP = dgvListaProdutos.CurrentRow.Index;
+                editarP = true;
+
+                nupStockP.Enabled = false;
+                tbNomeP.Enabled = false;
+                btAddProduto.Enabled = false;
+                btAlterarProduto.Enabled = true;
+
+                Produto produtoSelecionado = new Produto();
+                produtoSelecionado = Loja.ListaProdutos[indexP];
+
+                tbNomeP.Text = produtoSelecionado.nome;
+                nupPrecoP.Value = (decimal)produtoSelecionado.preco;
+                nupStockP.Value = (decimal)produtoSelecionado.stock;
+                rTbDescricao.Text = produtoSelecionado.descricao;
+                tbCategoriaP.Text = produtoSelecionado.categoria;
+
+                tabPrincipal.SelectedTab = tabPageProduto;
+                tabControlProduto.SelectedTab = tabPageAddProduto;
+            }
+        }
         private void btAddReStock_Click(object sender, EventArgs e)
         {
             if (Loja.ListaProdutos.Count < 0)
@@ -94,14 +139,12 @@ namespace M10_ProjetoDeAvaliacao
             Loja.ListaProdutos[cbProdutoReStock.SelectedIndex].stock += rS.Quantidade;
             AtualizarDGVReStock();
             AtualizarDGVProduto();
+            AtualizaCBReStockProduto();
             LimparReStock();
 
             tabPrincipal.SelectedTab = tabPageReStock;
             tabControlReStock.SelectedTab = tabPageListaReStock;
         }
-
-
-
 
         void AtualizarDGVProduto()
         {
@@ -177,6 +220,7 @@ namespace M10_ProjetoDeAvaliacao
             btAlterarProduto.Enabled = false;
             btAddProduto.Enabled = true;
             indexP = -1;
+            nupStockP.Enabled = true;
         }
 
         void LimparReStock()
@@ -185,6 +229,45 @@ namespace M10_ProjetoDeAvaliacao
             nupQuantidadeReStock.Value = nupQuantidadeReStock.Minimum;
         }
 
+        private void btIrClientes_Click(object sender, EventArgs e)
+        {
+            tabPrincipal.SelectedTab = tabPageCliente;
+            tabControlCliente.SelectedTab = tabPageListaClientes;
+        }
+
+        private void btIrProdutos_Click(object sender, EventArgs e)
+        {
+            tabPrincipal.SelectedTab = tabPageProduto;
+            tabControlProduto.SelectedTab = tabPageListaProdutos;
+        }
+
+        private void btIrVendas_Click(object sender, EventArgs e)
+        {
+            tabPrincipal.SelectedTab = tabPageVenda;
+            tabControlVendas.SelectedTab = tabPageListaVendas;
+        }
+
+        private void btIrReStock_Click(object sender, EventArgs e)
+        {
+            tabPrincipal.SelectedTab = tabPageReStock;
+            tabControlReStock.SelectedTab = tabPageListaReStock;
+        }
+
+        private void btSair_Click(object sender, EventArgs e)
+        {
+            Loja.GuardarFicheiros();
+            Form form = new Form1();
+            form.Show();
+            this.Dispose();
+        }
+
+
+
+
+
+
+
+        /*
         void GuardaProduto()
         {
             try
@@ -207,5 +290,6 @@ namespace M10_ProjetoDeAvaliacao
                 Console.WriteLine("Ocorreu um erro ao guardar os produtos: " + ex.Message);
             }
         }
+        */
     }
 }

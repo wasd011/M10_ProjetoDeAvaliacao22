@@ -11,7 +11,7 @@ namespace M10_ProjetoDeAvaliacao
         }
         public Form1(Loja loja)
         {
-            PegaFicheiros();
+            //PegaFicheiros(); // nao mexer
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             InitializeComponent();
         }
@@ -45,7 +45,9 @@ namespace M10_ProjetoDeAvaliacao
 
         private void btCliente_Click(object sender, EventArgs e)
         {
-
+            Form formLogin = new FormLoginCliente(Loja);
+            formLogin.Show();
+            this.Hide();
         }
 
         private void btLoja_Click(object sender, EventArgs e)

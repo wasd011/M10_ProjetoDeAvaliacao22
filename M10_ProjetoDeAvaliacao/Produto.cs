@@ -42,7 +42,7 @@ namespace M10_ProjetoDeAvaliacao
         {
             if (this.disponivel && this.stock >= quantidade)
             {
-                this.stock =- quantidade;
+                this.stock = this.stock - quantidade;
                 verificaDisponibiliade();
             }
         }

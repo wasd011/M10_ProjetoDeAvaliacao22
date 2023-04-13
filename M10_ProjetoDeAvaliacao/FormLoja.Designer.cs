@@ -28,11 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
+            btSair = new Button();
+            btIrReStock = new Button();
+            btIrVendas = new Button();
+            btIrProdutos = new Button();
+            btIrClientes = new Button();
+            label10 = new Label();
             tabPrincipal = new TabControl();
             tabPageCliente = new TabPage();
             tabControlCliente = new TabControl();
             tabPageListaClientes = new TabPage();
+            label11 = new Label();
             dgvListaClientes = new DataGridView();
             nome = new DataGridViewTextBoxColumn();
             morada = new DataGridViewTextBoxColumn();
@@ -43,6 +51,7 @@
             tabPageProduto = new TabPage();
             tabControlProduto = new TabControl();
             tabPageListaProdutos = new TabPage();
+            label12 = new Label();
             dgvListaProdutos = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             preco = new DataGridViewTextBoxColumn();
@@ -50,6 +59,8 @@
             descricao = new DataGridViewTextBoxColumn();
             categoria = new DataGridViewTextBoxColumn();
             disponivel = new DataGridViewTextBoxColumn();
+            cMSProduto = new ContextMenuStrip(components);
+            editarProdutoToolStripMenuItem = new ToolStripMenuItem();
             tabPageAddProduto = new TabPage();
             btAlterarProduto = new Button();
             label6 = new Label();
@@ -67,6 +78,7 @@
             tabPageVenda = new TabPage();
             tabControlVendas = new TabControl();
             tabPageListaVendas = new TabPage();
+            label13 = new Label();
             dgvListaVendas = new DataGridView();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             nomeP = new DataGridViewTextBoxColumn();
@@ -75,6 +87,7 @@
             tabPageReStock = new TabPage();
             tabControlReStock = new TabControl();
             tabPageListaReStock = new TabPage();
+            label14 = new Label();
             dgvListaReStock = new DataGridView();
             produto = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
@@ -86,6 +99,7 @@
             nupQuantidadeReStock = new NumericUpDown();
             cbProdutoReStock = new ComboBox();
             label7 = new Label();
+            panel1.SuspendLayout();
             tabPrincipal.SuspendLayout();
             tabPageCliente.SuspendLayout();
             tabControlCliente.SuspendLayout();
@@ -95,6 +109,7 @@
             tabControlProduto.SuspendLayout();
             tabPageListaProdutos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvListaProdutos).BeginInit();
+            cMSProduto.SuspendLayout();
             tabPageAddProduto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nupStockP).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupPrecoP).BeginInit();
@@ -112,12 +127,78 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btSair);
+            panel1.Controls.Add(btIrReStock);
+            panel1.Controls.Add(btIrVendas);
+            panel1.Controls.Add(btIrProdutos);
+            panel1.Controls.Add(btIrClientes);
+            panel1.Controls.Add(label10);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(153, 450);
+            panel1.Size = new Size(157, 450);
             panel1.TabIndex = 0;
+            // 
+            // btSair
+            // 
+            btSair.Location = new Point(3, 387);
+            btSair.Name = "btSair";
+            btSair.Size = new Size(154, 63);
+            btSair.TabIndex = 5;
+            btSair.Text = "Sair";
+            btSair.UseVisualStyleBackColor = true;
+            btSair.Click += btSair_Click;
+            // 
+            // btIrReStock
+            // 
+            btIrReStock.Location = new Point(3, 292);
+            btIrReStock.Name = "btIrReStock";
+            btIrReStock.Size = new Size(154, 63);
+            btIrReStock.TabIndex = 4;
+            btIrReStock.Text = "ReStock";
+            btIrReStock.UseVisualStyleBackColor = true;
+            btIrReStock.Click += btIrReStock_Click;
+            // 
+            // btIrVendas
+            // 
+            btIrVendas.Location = new Point(3, 222);
+            btIrVendas.Name = "btIrVendas";
+            btIrVendas.Size = new Size(154, 64);
+            btIrVendas.TabIndex = 3;
+            btIrVendas.Text = "Vendas";
+            btIrVendas.UseVisualStyleBackColor = true;
+            btIrVendas.Click += btIrVendas_Click;
+            // 
+            // btIrProdutos
+            // 
+            btIrProdutos.Location = new Point(3, 152);
+            btIrProdutos.Name = "btIrProdutos";
+            btIrProdutos.Size = new Size(154, 64);
+            btIrProdutos.TabIndex = 2;
+            btIrProdutos.Text = "Produtos";
+            btIrProdutos.UseVisualStyleBackColor = true;
+            btIrProdutos.Click += btIrProdutos_Click;
+            // 
+            // btIrClientes
+            // 
+            btIrClientes.Location = new Point(3, 82);
+            btIrClientes.Name = "btIrClientes";
+            btIrClientes.Size = new Size(154, 64);
+            btIrClientes.TabIndex = 1;
+            btIrClientes.Text = "Clientes";
+            btIrClientes.UseVisualStyleBackColor = true;
+            btIrClientes.Click += btIrClientes_Click;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(34, 18);
+            label10.Name = "label10";
+            label10.Size = new Size(89, 50);
+            label10.TabIndex = 0;
+            label10.Text = "Loja";
             // 
             // tabPrincipal
             // 
@@ -159,6 +240,7 @@
             // 
             // tabPageListaClientes
             // 
+            tabPageListaClientes.Controls.Add(label11);
             tabPageListaClientes.Controls.Add(dgvListaClientes);
             tabPageListaClientes.Location = new Point(4, 4);
             tabPageListaClientes.Name = "tabPageListaClientes";
@@ -167,6 +249,16 @@
             tabPageListaClientes.TabIndex = 0;
             tabPageListaClientes.Text = "Lista Clientes";
             tabPageListaClientes.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.Location = new Point(6, 43);
+            label11.Name = "label11";
+            label11.Size = new Size(153, 32);
+            label11.TabIndex = 1;
+            label11.Text = "Lista Clientes";
             // 
             // dgvListaClientes
             // 
@@ -178,6 +270,7 @@
             dgvListaClientes.Name = "dgvListaClientes";
             dgvListaClientes.ReadOnly = true;
             dgvListaClientes.RowTemplate.Height = 25;
+            dgvListaClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvListaClientes.Size = new Size(635, 320);
             dgvListaClientes.TabIndex = 0;
             // 
@@ -242,6 +335,7 @@
             // 
             // tabPageListaProdutos
             // 
+            tabPageListaProdutos.Controls.Add(label12);
             tabPageListaProdutos.Controls.Add(dgvListaProdutos);
             tabPageListaProdutos.Location = new Point(4, 4);
             tabPageListaProdutos.Name = "tabPageListaProdutos";
@@ -251,12 +345,23 @@
             tabPageListaProdutos.Text = "Lista Produtos";
             tabPageListaProdutos.UseVisualStyleBackColor = true;
             // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(6, 43);
+            label12.Name = "label12";
+            label12.Size = new Size(163, 32);
+            label12.TabIndex = 2;
+            label12.Text = "Lista Produtos";
+            // 
             // dgvListaProdutos
             // 
             dgvListaProdutos.AllowUserToAddRows = false;
             dgvListaProdutos.AllowUserToDeleteRows = false;
             dgvListaProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvListaProdutos.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, preco, stock, descricao, categoria, disponivel });
+            dgvListaProdutos.ContextMenuStrip = cMSProduto;
             dgvListaProdutos.Location = new Point(0, 78);
             dgvListaProdutos.Name = "dgvListaProdutos";
             dgvListaProdutos.RowTemplate.Height = 25;
@@ -294,6 +399,19 @@
             disponivel.HeaderText = "Disponível";
             disponivel.Name = "disponivel";
             // 
+            // cMSProduto
+            // 
+            cMSProduto.Items.AddRange(new ToolStripItem[] { editarProdutoToolStripMenuItem });
+            cMSProduto.Name = "cMSProduto";
+            cMSProduto.Size = new Size(105, 26);
+            // 
+            // editarProdutoToolStripMenuItem
+            // 
+            editarProdutoToolStripMenuItem.Name = "editarProdutoToolStripMenuItem";
+            editarProdutoToolStripMenuItem.Size = new Size(104, 22);
+            editarProdutoToolStripMenuItem.Text = "Editar";
+            editarProdutoToolStripMenuItem.Click += editarProdutoToolStripMenuItem_Click;
+            // 
             // tabPageAddProduto
             // 
             tabPageAddProduto.Controls.Add(btAlterarProduto);
@@ -327,6 +445,7 @@
             btAlterarProduto.TabIndex = 12;
             btAlterarProduto.Text = "Alterar";
             btAlterarProduto.UseVisualStyleBackColor = true;
+            btAlterarProduto.Click += btAlterarProduto_Click;
             // 
             // label6
             // 
@@ -461,6 +580,7 @@
             // 
             // tabPageListaVendas
             // 
+            tabPageListaVendas.Controls.Add(label13);
             tabPageListaVendas.Controls.Add(dgvListaVendas);
             tabPageListaVendas.Location = new Point(4, 4);
             tabPageListaVendas.Name = "tabPageListaVendas";
@@ -470,13 +590,26 @@
             tabPageListaVendas.Text = "Lista de Vendas";
             tabPageListaVendas.UseVisualStyleBackColor = true;
             // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.Location = new Point(6, 44);
+            label13.Name = "label13";
+            label13.Size = new Size(178, 32);
+            label13.TabIndex = 2;
+            label13.Text = "Lista de Vendas";
+            // 
             // dgvListaVendas
             // 
+            dgvListaVendas.AllowUserToAddRows = false;
+            dgvListaVendas.AllowUserToDeleteRows = false;
             dgvListaVendas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvListaVendas.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2, nomeP, quantidade, data });
             dgvListaVendas.Location = new Point(0, 79);
             dgvListaVendas.Name = "dgvListaVendas";
             dgvListaVendas.RowTemplate.Height = 25;
+            dgvListaVendas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvListaVendas.Size = new Size(633, 320);
             dgvListaVendas.TabIndex = 0;
             // 
@@ -527,6 +660,7 @@
             // 
             // tabPageListaReStock
             // 
+            tabPageListaReStock.Controls.Add(label14);
             tabPageListaReStock.Controls.Add(dgvListaReStock);
             tabPageListaReStock.Location = new Point(4, 4);
             tabPageListaReStock.Name = "tabPageListaReStock";
@@ -536,13 +670,26 @@
             tabPageListaReStock.Text = "Lista de ReStock";
             tabPageListaReStock.UseVisualStyleBackColor = true;
             // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.Location = new Point(6, 43);
+            label14.Name = "label14";
+            label14.Size = new Size(151, 32);
+            label14.TabIndex = 2;
+            label14.Text = "Lista ReStock";
+            // 
             // dgvListaReStock
             // 
+            dgvListaReStock.AllowUserToAddRows = false;
+            dgvListaReStock.AllowUserToDeleteRows = false;
             dgvListaReStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvListaReStock.Columns.AddRange(new DataGridViewColumn[] { produto, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn3 });
             dgvListaReStock.Location = new Point(0, 78);
             dgvListaReStock.Name = "dgvListaReStock";
             dgvListaReStock.RowTemplate.Height = 25;
+            dgvListaReStock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvListaReStock.Size = new Size(633, 320);
             dgvListaReStock.TabIndex = 0;
             // 
@@ -649,18 +796,23 @@
             MaximizeBox = false;
             Name = "FormLoja";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormLoja";
+            Text = "Área Administrativa da Loja";
             FormClosed += FormLoja_FormClosed;
             Load += FormLoja_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             tabPrincipal.ResumeLayout(false);
             tabPageCliente.ResumeLayout(false);
             tabControlCliente.ResumeLayout(false);
             tabPageListaClientes.ResumeLayout(false);
+            tabPageListaClientes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvListaClientes).EndInit();
             tabPageProduto.ResumeLayout(false);
             tabControlProduto.ResumeLayout(false);
             tabPageListaProdutos.ResumeLayout(false);
+            tabPageListaProdutos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvListaProdutos).EndInit();
+            cMSProduto.ResumeLayout(false);
             tabPageAddProduto.ResumeLayout(false);
             tabPageAddProduto.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nupStockP).EndInit();
@@ -668,10 +820,12 @@
             tabPageVenda.ResumeLayout(false);
             tabControlVendas.ResumeLayout(false);
             tabPageListaVendas.ResumeLayout(false);
+            tabPageListaVendas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvListaVendas).EndInit();
             tabPageReStock.ResumeLayout(false);
             tabControlReStock.ResumeLayout(false);
             tabPageListaReStock.ResumeLayout(false);
+            tabPageListaReStock.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvListaReStock).EndInit();
             tabPageAddReStock.ResumeLayout(false);
             tabPageAddReStock.PerformLayout();
@@ -739,5 +893,17 @@
         private NumericUpDown nupQuantidadeReStock;
         private Button btAlterarProduto;
         private Label label9;
+        private Button btIrReStock;
+        private Button btIrVendas;
+        private Button btIrProdutos;
+        private Button btIrClientes;
+        private Label label10;
+        private Button btSair;
+        private Label label11;
+        private Label label12;
+        private Label label13;
+        private Label label14;
+        private ContextMenuStrip cMSProduto;
+        private ToolStripMenuItem editarProdutoToolStripMenuItem;
     }
 }

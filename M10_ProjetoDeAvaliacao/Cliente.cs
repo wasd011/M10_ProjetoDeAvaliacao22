@@ -32,14 +32,5 @@ namespace M10_ProjetoDeAvaliacao
         public string email { get; set; }
         public string numero { get; set; }
         public string senha { get; set; }
-
-        
-        public bool verificaLogin(string email, string senha)
-        {
-            if (email == this.email && senha == this.senha)
-                return true;
-
-            return false;
-        }
     }
 }

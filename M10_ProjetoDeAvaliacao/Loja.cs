@@ -15,7 +15,7 @@ namespace M10_ProjetoDeAvaliacao
         public virtual List<Compra> ListaVendas { get; set; } = new List<Compra>();
         public virtual List<ReStock> ListaReStock { get; set; } = new List<ReStock>();
 
-        Cliente ClienteAual { get; set; } = new Cliente();
+        public Cliente ClienteAtual { get; set; } = new Cliente();
 
         String fClientes = "Clientes.txt";
         String fProdutos = "Produtos.txt";
@@ -23,8 +23,43 @@ namespace M10_ProjetoDeAvaliacao
         String fReStock = "ReStock.txt";
 
 
-        public class VerificaCLiente
+        public class VerificaCliente
         {
+            public static bool VerificaTudo(Loja loja, string nome, string morada, string nifs, 
+                string email, string numero, string senha)
+            {
+                if (!Loja.VerificaCliente.Nome(nome))
+                {
+                    MessageBox.Show("Nome inválido!" , "Erro!" , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                if (!Loja.VerificaCliente.Morada(morada))
+                {
+                    MessageBox.Show("Morada inválida!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                if (!Loja.VerificaCliente.NIF(loja, nifs))
+                {
+                    MessageBox.Show("NIF inválido/já usado!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                if (!Loja.VerificaCliente.Email(loja, email))
+                {
+                    MessageBox.Show("Email inválido/já usado!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                if (!Loja.VerificaCliente.Numero(numero))
+                {
+                    MessageBox.Show("Número telefónico inválido!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                if (!Loja.VerificaCliente.Senha(senha))
+                {
+                    MessageBox.Show("Senha inválida!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                return true;
+            }
             public static bool NIF(Loja loja, string nifS)
             {
                 if (!string.IsNullOrEmpty(nifS) && nifS.Length == 9 && nifS.All(char.IsDigit) && !nifS.Contains("|"))
@@ -43,10 +78,57 @@ namespace M10_ProjetoDeAvaliacao
                 }
                 return false;
             }
-            public static bool OutraFuncao()
+            public static bool Morada(string morada)
             {
-                // Implementação da outra função
-                return false;
+                return (string.IsNullOrEmpty(morada) || !morada.Contains("|"));
+            }
+            public static bool Nome(string nome)
+            {
+                return (string.IsNullOrEmpty(nome) || !nome.Contains("|"));
+            }
+            public static bool Email(Loja loja, string email)
+            {
+                if(loja.ListaClientes.Count > 0)
+                {
+                    foreach(Cliente x in loja.ListaClientes)
+                    {
+                        if (x.email == email)
+                            return false;
+                    }
+
+                }
+                try
+                {
+                    var enderecoEmail = new System.Net.Mail.MailAddress(email);
+                    return enderecoEmail.Address == email;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            public static bool Numero(string numero)
+            {
+                return (string.IsNullOrEmpty(numero) || !numero.Contains("|"));
+            }
+            public static bool Senha(string senha)
+            {
+                return (string.IsNullOrEmpty(senha) || !senha.Contains("|"));
+            }
+
+            public static Cliente VerificaLogin(Loja loja, string email, string senha)
+            {
+                if(loja.ListaClientes.Count == 0)
+                {
+                    MessageBox.Show("Lista de Clientes nula!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+                foreach(Cliente x in loja.ListaClientes)
+                {
+                    if (x.email == email && x.senha == senha)
+                        return x;
+                }
+                return null;
             }
         }
 
@@ -114,7 +196,7 @@ namespace M10_ProjetoDeAvaliacao
 
         public void PegaFicheiros(Loja Loja)
         {
-            
+
             PegaClintes();
             PegaProdutos();
             PegaCompras();
